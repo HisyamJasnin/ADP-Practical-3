@@ -3,9 +3,12 @@ package package01;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class BabyBirdGame extends Application{
@@ -22,11 +25,33 @@ public class BabyBirdGame extends Application{
 		arg0.show();
 	}
 	
+	private static int score =0;
+	private static int previousScore= 0;
+	
 	public static void initGUI() {
+		previousScore = score;
+		score = 0;
 		VBox rootPane = new VBox();
 		 rootPane.setAlignment(Pos.TOP_CENTER);
 		 rootPane.setBackground(new Background(new BackgroundFill(Color.BLACK,
 		null, null)));
+		 
+		 // Title
+		 Label titleLabel = new Label("Baby Bird");
+		 titleLabel.setFont(Font.font(32));
+		 titleLabel.setTextFill(Color.WHITE);
+		 
+		 // Score
+		 ScorePane scorePane = new ScorePane("Score: ", score, Color.DARKBLUE, Color.WHITE);
+		 
+		 // Previous Score
+		 ScorePane previousScorePane = new ScorePane("Previous Score:", previousScore, Color.DARKCYAN, Color.WHITE);
+		 
+		 // Bird Flight
+		 
+		 //Help Message
+		 
+		 rootPane.getChildren().addAll(titleLabel, scorePane, previousScorePane);
 
 		 Scene scene = new Scene(rootPane);
 
