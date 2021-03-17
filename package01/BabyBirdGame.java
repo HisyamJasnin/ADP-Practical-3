@@ -48,10 +48,12 @@ public class BabyBirdGame extends Application{
 		 ScorePane previousScorePane = new ScorePane("Previous Score:", previousScore, Color.DARKCYAN, Color.WHITE);
 		 
 		 // Bird Flight
+		 FlightPane flightPane = new FlightPane();
+		 
 		 
 		 //Help Message
 		 
-		 rootPane.getChildren().addAll(titleLabel, scorePane, previousScorePane);
+		 rootPane.getChildren().addAll(titleLabel, scorePane, previousScorePane, flightPane);
 
 		 Scene scene = new Scene(rootPane);
 
