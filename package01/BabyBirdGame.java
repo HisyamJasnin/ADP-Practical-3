@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
@@ -24,6 +26,8 @@ public class BabyBirdGame extends Application{
 		arg0.sizeToScene();
 		arg0.show();
 	}
+	
+	private static boolean FIRST_KEY_PRESSED = true;
 	
 	private static int score =0;
 	private static int previousScore= 0;
@@ -56,6 +60,24 @@ public class BabyBirdGame extends Application{
 		 rootPane.getChildren().addAll(titleLabel, scorePane, previousScorePane, flightPane);
 
 		 Scene scene = new Scene(rootPane);
+		 
+		 scene.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+			 if(e.getCode() == KeyCode.SPACE) {
+				 if(FIRST_KEY_PRESSED) {
+				 flightPane.gameStart = true;
+				 flightPane.bird.wingUp();
+				 flightPane.moveBirdUp();
+				 FIRST_KEY_PRESSED = false; // This will disable bird from moving up.
+			 }
+			 }
+		 });
+		 
+		 scene.addEventFilter(KeyEvent.KEY_RELEASED, e -> {
+			 if(e.getCode() == KeyCode.SPACE) {
+				 flightPane.bird.wingDown();
+				 FIRST_KEY_PRESSED = true;
+			 }
+	});
 
 		 primaryStage.setScene(scene);
 		

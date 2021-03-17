@@ -32,4 +32,20 @@ public class Bird extends Pane{
 		wing.setStroke(Color.BLACK);
 		this.getChildren().addAll(beak, body, eye, wing);
 	}
+	
+	public void wingUp() {
+		wing.getPoints().remove(wing.getPoints().size() -1);
+		wing.getPoints().remove(wing.getPoints().size() -1);
+		wing.getPoints().addAll(
+				25.0, 10.0
+				);
+	}
+	
+	public void wingDown() {
+		wing.getPoints().remove(wing.getPoints().size() -1);
+		wing.getPoints().remove(wing.getPoints().size() -1);
+		wing.getPoints().addAll(
+				15.0, 35.0
+				);
+	}
 }
