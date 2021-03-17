@@ -26,5 +26,9 @@ public class ScorePane extends HBox{
 		this.setAlignment(Pos.CENTER);
 		this.setBackground(new Background(new BackgroundFill(backgroundColour, null, null)));
 	}
+	
+	public void updateScoreLabel(int score) {
+		scoreLabel.setText("" + score);
+		}
 
 }

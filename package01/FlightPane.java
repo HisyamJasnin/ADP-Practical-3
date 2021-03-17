@@ -38,6 +38,7 @@ public class FlightPane extends Pane {
 		Timeline animation = new Timeline(new KeyFrame(Duration.millis(50), e -> {
 		  if(gameStart == true) {	
 			bird.setLayoutY(bird.getLayoutY() + 5);
+			BabyBirdGame.updateScore();
 			for(Rectangle topWall : topWalls) {
 			  topWall.setLayoutX(topWall.getLayoutX() - 5);
 			  
