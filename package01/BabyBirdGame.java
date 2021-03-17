@@ -11,6 +11,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class BabyBirdGame extends Application{
@@ -60,8 +61,14 @@ public class BabyBirdGame extends Application{
 		 
 		 
 		 //Help Message
+		 Label helpLabel = new Label("Press <space> to start the game and fly the bird."+ "Make sure the bird does not hit the ground, ceiling or the walls.");
+				 helpLabel.setFont(Font.font(20));
+				 helpLabel.setTextFill(Color.WHITE);
+				 helpLabel.setWrapText(true);
+				 helpLabel.setTextAlignment(TextAlignment.CENTER);
+				 helpLabel.setPrefWidth(600);
 		 
-		 rootPane.getChildren().addAll(titleLabel, scorePane, previousScorePane, flightPane);
+		 rootPane.getChildren().addAll(titleLabel, scorePane, previousScorePane, flightPane, helpLabel);
 
 		 Scene scene = new Scene(rootPane);
 		 
