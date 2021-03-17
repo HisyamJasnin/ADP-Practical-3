@@ -40,10 +40,23 @@ public class FlightPane extends Pane {
 			bird.setLayoutY(bird.getLayoutY() + 5);
 			for(Rectangle topWall : topWalls) {
 			  topWall.setLayoutX(topWall.getLayoutX() - 5);
+			  
+			  if(bird.getBoundsInParent().intersects(topWall.getBoundsInParent())) {
+				  gameStart = false;
+				  }
 				}
 			for(Rectangle bottomWall : bottomWalls) {
 			  bottomWall.setLayoutX(bottomWall.getLayoutX() - 5);
+			  if(bird.getBoundsInParent().intersects(bottomWall.getBoundsInParent())) {
+				  gameStart = false;
+				  }
+			  
 				}
+			
+			// Check if bird goes beyond pane height
+			if(bird.getLayoutY() > HEIGHT - bird.getHeight() || bird.getLayoutY() < 0) {
+				gameStart = false;
+			}
 			
 			// This will check if the left most walls goes beyond the left of the pane
 			if(topWalls.getFirst().getBoundsInParent().getMaxX() < 0) {
@@ -54,6 +67,9 @@ public class FlightPane extends Pane {
 				generateWall(topWalls.getLast().getBoundsInParent().getCenterX()
 						+ 250);
 		  }
+			  if(gameStart == false) {
+				  BabyBirdGame.initGUI();
+			  }
 		  }
 		}));
 		animation.setCycleCount(Timeline.INDEFINITE);
